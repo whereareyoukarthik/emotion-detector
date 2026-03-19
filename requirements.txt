@@ -1,7 +1,7 @@
 flask
-fer
+fer==22.5.1
 opencv-python
 numpy
-torch
-torchvision
 gunicorn
+moviepy==1.0.3
+setuptools
