@@ -1,0 +1,7 @@
+flask
+fer
+opencv-python
+numpy
+torch
+torchvision
+gunicorn

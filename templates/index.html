@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Emotion Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎭 Face Emotion Detector</h1>
+            <p class="subtitle">Real-time emotion & character detection powered by AI</p>
+        </div>
+
+        <div class="main-grid">
+            <!-- Left: Video Feed -->
+            <div class="video-panel">
+                <div class="video-wrapper">
+                    <video id="video" autoplay playsinline muted></video>
+                    <canvas id="overlay"></canvas>
+                    <div class="no-face-overlay" id="noFaceMsg" style="display:none;">
+                        👁️ No face detected
+                    </div>
+                    <div class="loading-overlay" id="loadingMsg">
+                        ⏳ Loading AI models...
+                    </div>
+                </div>
+                <div class="video-controls">
+                    <button id="startBtn" onclick="startCamera()" disabled>▶ Start Camera</button>
+                    <button id="stopBtn" onclick="stopCamera()" disabled>⏹ Stop</button>
+                    <button id="screenshotBtn" onclick="takeScreenshot()" disabled>📸 Screenshot</button>
+                </div>
+            </div>
+
+            <!-- Right: Emotion Data -->
+            <div class="data-panel">
+                <div class="character-card" id="characterCard">
+                    <div class="character-label" id="characterLabel">🎭 Waiting...</div>
+                    <div class="emotion-badge" id="emotionBadge">—</div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title">📊 Confidence</div>
+                    <div class="confidence-bar-wrapper">
+                        <div class="confidence-bar" id="confidenceBar"></div>
+                    </div>
+                    <div class="confidence-value" id="confidenceValue">0%</div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title">🧠 All Emotions</div>
+                    <div class="all-emotions">
+                        <div class="emotion-row">
+                            <span>happy</span>
+                            <div class="mini-bar-wrapper"><div class="mini-bar" id="bar-happy"></div></div>
+                            <span id="val-happy">0%</span>
+                        </div>
+                        <div class="emotion-row">
+                            <span>angry</span>
+                            <div class="mini-bar-wrapper"><div class="mini-bar" id="bar-angry"></div></div>
+                            <span id="val-angry">0%</span>
+                        </div>
+                        <div class="emotion-row">
+                            <span>sad</span>
+                            <div class="mini-bar-wrapper"><div class="mini-bar" id="bar-sad"></div></div>
+                            <span id="val-sad">0%</span>
+                        </div>
+                        <div class="emotion-row">
+                            <span>surprised</span>
+                            <div class="mini-bar-wrapper"><div class="mini-bar" id="bar-surprised"></div></div>
+                            <span id="val-surprised">0%</span>
+                        </div>
+                        <div class="emotion-row">
+                            <span>fearful</span>
+                            <div class="mini-bar-wrapper"><div class="mini-bar" id="bar-fearful"></div></div>
+                            <span id="val-fearful">0%</span>
+                        </div>
+                        <div class="emotion-row">
+                            <span>disgusted</span>
+                            <div class="mini-bar-wrapper"><div class="mini-bar" id="bar-disgusted"></div></div>
+                            <span id="val-disgusted">0%</span>
+                        </div>
+                        <div class="emotion-row">
+                            <span>neutral</span>
+                            <div class="mini-bar-wrapper"><div class="mini-bar" id="bar-neutral"></div></div>
+                            <span id="val-neutral">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title">🕐 Recent Detections</div>
+                    <div id="history" class="history"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="screenshotCanvas" style="display:none;"></canvas>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

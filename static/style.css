@@ -1,0 +1,228 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #0f1117;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h1 {
+    font-size: 2.4em;
+    color: #4361ee;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #aaaaaa;
+    font-size: 1em;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+}
+
+.video-panel { display: flex; flex-direction: column; gap: 16px; }
+
+.video-wrapper {
+    position: relative;
+    background: #1e1e2e;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    border: 2px solid #2a2a3e;
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    transform: scaleX(-1);
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.no-face-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.85);
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    color: #4361ee;
+    font-weight: bold;
+}
+
+.video-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.video-controls button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+#startBtn { background: #4361ee; color: white; }
+#startBtn:hover:not(:disabled) { background: #3451d1; }
+#stopBtn { background: #e63946; color: white; }
+#stopBtn:hover:not(:disabled) { background: #c1121f; }
+#screenshotBtn { background: #2d6a4f; color: white; }
+#screenshotBtn:hover:not(:disabled) { background: #1b4332; }
+
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.data-panel { display: flex; flex-direction: column; gap: 16px; }
+
+.character-card {
+    background: #1e1e2e;
+    border: 2px solid #4361ee;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.character-label {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.emotion-badge {
+    display: inline-block;
+    background: #4361ee33;
+    color: #4361ee;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.info-card {
+    background: #1e1e2e;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid #2a2a3e;
+}
+
+.card-title {
+    font-size: 0.9em;
+    color: #aaaaaa;
+    margin-bottom: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.confidence-bar-wrapper {
+    background: #12122a;
+    border-radius: 8px;
+    height: 14px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.confidence-bar {
+    height: 100%;
+    border-radius: 8px;
+    width: 0%;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.confidence-value {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.all-emotions { display: flex; flex-direction: column; gap: 8px; }
+
+.emotion-row {
+    display: grid;
+    grid-template-columns: 70px 1fr 45px;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85em;
+}
+
+.emotion-row span:first-child { color: #aaaaaa; }
+.emotion-row span:last-child { color: #ffffff; text-align: right; }
+
+.mini-bar-wrapper {
+    background: #12122a;
+    border-radius: 4px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.mini-bar {
+    height: 100%;
+    background: #4361ee;
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.history { display: flex; flex-direction: column; gap: 6px; }
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #12122a;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85em;
+}
+
+.history-char { color: #ffffff; }
+.history-time { color: #666; font-size: 0.8em; }
+
+@media (max-width: 768px) {
+    .main-grid { grid-template-columns: 1fr; }
+}
