@@ -1,7 +1,2 @@
 flask
-fer==22.5.1
-opencv-python
-numpy
 gunicorn
-moviepy==1.0.3
-setuptools
